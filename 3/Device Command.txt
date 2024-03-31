@@ -1,0 +1,112 @@
+Internet Router 
+
+enable
+
+conf t
+
+int gig 0/1
+
+no shutdown
+
+ip address dhcp
+
+exit
+
+int gig 0/0/0
+
+ip address 192.168.1.1 255.255.255.0
+
+no shutdown
+
+exit
+
+ip access-list extended 100
+
+30 permit ip any any 
+
+exit
+
+ip nat source list 100 int gig 0/1 overload
+
+logging 192.168.1.8 255.255.255.0
+
+ntp server 192.168.1.9
+
+ip domain-name 192.168.1.10 
+
+DNS Server 
+
+enable
+
+conf t
+
+int gig 0/0
+
+ip address 192.168.1.10 255.255.255.0
+
+no shutdown
+
+exit
+
+ip dns server
+
+ip domain-lookup
+
+ip host ir.pool.ntp.org x.x.x.x
+
+logging 192.168.2.8 255.255.255.0
+
+ntp server 192.168.1.9
+
+
+NTP Server 
+
+enable
+
+conf t
+
+int gig 0/0
+
+ip address 192.168.1.9 255.255.255.0
+
+no shutdown 
+
+logging 192.168.2.8 255.255.255.0
+
+
+exit
+
+ntp master 15 
+
+ntp server ir.pool.ntp.org
+
+logging 192.168.2.8 255.255.255.0
+
+Sys log server 
+
+int gig 0/0
+
+ip address 192.168.2.8 255.255.255.0
+
+no shutdown 
+
+exit
+
+ip domain-name 192.168.1.10
+
+ntp server 192.168.1.9
+
+logging 
+
+PC1
+
+ifconfig eth0 192.168.2.7 netmask 255.255.255.0
+route add default gw 192.168.1.1
+
+
+
+
+
+
+
+ 

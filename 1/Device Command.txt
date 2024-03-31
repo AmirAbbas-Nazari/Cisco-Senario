@@ -1,0 +1,81 @@
+R1
+
+enable
+
+configuration terminal
+
+interface gig 0/0/0 
+
+ip address 192.168.1.1 255.255.255.0
+
+no shutdown
+
+exit
+
+enable secret Cisco
+
+service password encryption
+
+username cisco secret Cisco123
+
+line vty 0 15 
+
+login local 
+
+transport input all
+
+exit
+
+line console 0
+
+login local
+
+exit
+
+do ping 192.168.1.2
+
+telnet 192.168.1.2
+
+
+do wr
+
+R2
+
+enable
+
+configuration terminal
+
+interface gig 0/0/0 
+
+ip address 192.168.1.2 255.255.255.0
+
+no shutdown
+
+exit
+
+enable secret Cisco
+
+service password encryption
+
+username cisco secret Cisco123
+
+line vty 0 15 
+
+login local 
+
+transport input all
+
+exit
+
+line console 0
+
+login local
+
+exit
+
+do ping 192.168.1.1
+
+telnet 192.168.1.1
+
+do wr
+

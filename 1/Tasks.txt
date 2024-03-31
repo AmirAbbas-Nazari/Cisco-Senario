@@ -1,0 +1,10 @@
+Task
+Configure The Device As Follows :
+1 ) Configure IP Address As Shown In The Diagram
+2 ) Ensure Routers Can Ping Each Other
+3 ) Configure An Enable Password Of "Cisco"
+4 ) Encrypt The Enable Password 
+5 ) Configure A Secret Password Of "Cisco123"
+6 ) Configure The First 5 Telnet Lines And Use A Line Password Of Cisco On Them 
+7 ) Make Sure You Can Telnet From One Device To The Other 
+8 ) Configure A Console Password Of "Cisco" And Test
